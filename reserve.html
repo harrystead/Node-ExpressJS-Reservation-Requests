@@ -102,24 +102,26 @@
 
         console.log(newReservation);
 
-        $.post("/api/tableData", newReservation).then(function (data) {
-          console.log(" I am the response from the post : ", data)
-          
+        const currentURL = window.location.origin;
+
+	    $.post(currentURL + "/api/tableData", newReservation,
+	    function(data){
+          console.log(" I am the response from the post : ", data);
+
+	    	if(data == true){
+	    		alert("Yay! You are officially booked!")
+            }
+            
+	    	if(data == false){
+	    		alert("Sorry you are on the wait list")
+            }
+            
+    		$('#reserve-name').val("");
+			$('#reserve-phone').val("");
+			$('#reserve-email').val("");
+			$('#reserve-unique-id').val("");
+
         });
-
-        // $.ajax({
-        //   url: "/api/tableData",
-        //   method: "GET",
-        // }).then(function (response) {
-        //   console.log(response);
-
-        //     if (response.length > 5) {
-        //       alert("Fully booked. You have been added to the wait list");
-        //   }
-        //     else{
-        //       alert("You've successfully booked.")
-        //     }
-        // });
       });
     </script>
   </body>

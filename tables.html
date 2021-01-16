@@ -84,18 +84,7 @@
         console.log(response);
 
         for (var i = 0; i < response.length; i++) {
-          const tableData = response[i];
-          if(tableData) {
-            const listTable = document.getElementById("tableList");
-            listTable.innerHTML +=
-              "<li>" + table.name + " " + table.id + "</li>";
-          }
-          // } else {
-          //   const table = response[i];
-          //   const waitList = document.getElementById("waitList");
-          //   waitTable.innerHTML +=
-          //     "<li>" + table.name + " " + table.id + "</li>";
-          // }
+       
         }
       });
     </script>
