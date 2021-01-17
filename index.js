@@ -22,12 +22,7 @@ const tableReservationsData = [
 ];
 
 const waitingListData = [
-  {
-    name: "jessica",
-    email: "jessica@gmail.com",
-    phone: "55789900",
-    id: "1223",
-  },
+
 ];
 
 //----------------------------------------------------\\

@@ -33,7 +33,7 @@
               <span class="fa fa-credit-card"></span> Make Reservation
             </button></a
           >
-          <a href="/"
+          <a href="/home"
             ><button class="btn btn-lg btn-default">
               <span class="fa fa-home"></span></button
           ></a>
@@ -69,8 +69,8 @@
           <p>Control Panel</p>
           <p>
             <a href="#" id="clear">Clear Table</a> |
-            <a href="/api/tables">API Table Link</a> |
-            <a href="/api/waitlist">API Wait List</a>
+            <a href="/api/tableData">API Table Link</a> |
+            <a href="/api/waitingData">API Wait List</a>
           </p>
         </div>
       </footer>
@@ -84,7 +84,25 @@
         console.log(response);
 
         for (var i = 0; i < response.length; i++) {
-       
+          const tableData = response[i];
+          const listTable = document.getElementById("tableList");
+          const tableNumber = i + 1;
+          listTable.innerHTML +=
+            "<li>" + "Table " + tableNumber + ": " + tableData.name + " " + tableData.id + "</li>";
+        }
+      });
+      $.ajax({
+        url: "/api/waitingData",
+        method: "GET",
+      }).then(function (response) {
+        console.log(response);
+
+        for (var i = 0; i < response.length; i++) {
+          const waitingData = response[i];
+          const waitingListTable = document.getElementById("waitList");
+          const tableNumber = i + 1;
+          waitingListTable.innerHTML +=
+            "<li>" + tableNumber + ": " + waitingData.name + " " + waitingData.id + "</li>";
         }
       });
     </script>
